@@ -1,0 +1,34 @@
+# The Vampire Twist
+# coded in Sonic Pi v3.0.1 by Mummy and Osgur
+# uses lots of cool samples and loops provided in the Sonic Pi tutorial
+
+sample :ambi_haunted_hum
+live_loop :guit do
+  with_fx :echo, mix: 0.8, phase: 0.25 do
+    sample :guit_em9, rate: 0.3
+  end
+  sample :guit_em9, rate: -0.3
+  sleep 8
+end
+live_loop :boom do
+  with_fx :reverb, room: 1 do
+    sample :bd_boom, amp: 10, rate: 1
+  end
+  sleep 8
+end
+live_loop :flibble do
+  with_fx :echo, mix: 0.4, phase: 0.25 do
+    sample :drum_cymbal_hard, rate: 1
+  end
+  sleep 2
+end
+live_loop :flibble do
+  with_fx :echo, mix: 0.4, phase: 0.25 do
+    sample :ambi_dark_woosh
+  end
+  sleep 1
+end
+loop do
+  sample :perc_bell, rate: (rrand 0.125, 2)
+  sleep rrand(0, 2)
+end
